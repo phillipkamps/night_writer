@@ -38,4 +38,9 @@ class Writer
       e2b_dictionary[letter][1] + "\n" +
       e2b_dictionary[letter][2]
   end
+
+  # def translate_message(message)
+  #   message.each do { |char| translate_letter(char)
+  #   end
+  # end
 end

@@ -36,7 +36,7 @@ RSpec.describe Writer do
     expect(expected.e2b_dictionary).to eq(expected_dictionary)
   end
 
-  it "converts letter to braille" do
+  it "translates letter to braille" do
     expected = Writer.new
     expect { puts expected.translate_letter("a") }.to output(
       <<~EXPECTED
