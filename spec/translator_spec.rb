@@ -11,4 +11,10 @@ RSpec.describe Translator do
     expected = Translator.new("some text")
     expect(expected.incoming_text).to eq("some text")
   end
+
+  it "changes incoming text" do
+    expected = Translator.new("some text")
+    expected.change_it
+    expect(expected).to eq("SOME TEXT")
+  end
 end
