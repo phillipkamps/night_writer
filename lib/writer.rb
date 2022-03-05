@@ -1,7 +1,7 @@
 class Writer
   attr_reader :e2b_dictionary
 
-  def initialize(letter)
+  def initialize
     @e2b_dictionary = {
       "a" => ["0.", "..", ".."],
       "b" => ["0.", "0.", ".."],
@@ -31,5 +31,11 @@ class Writer
       "z" => ["0.", ".0", "00"],
       " " => ["..", "..", ".."]
     }
+  end
+
+  def translate_letter(letter)
+    puts e2b_dictionary[letter][0]
+    puts e2b_dictionary[letter][1]
+    puts e2b_dictionary[letter][2]
   end
 end
