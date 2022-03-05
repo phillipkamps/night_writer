@@ -34,8 +34,8 @@ class Writer
   end
 
   def translate_letter(letter)
-    e2b_dictionary[letter][0]
-    e2b_dictionary[letter][1]
-    e2b_dictionary[letter][2]
+    e2b_dictionary[letter][0] + "\n" +
+      e2b_dictionary[letter][1] + "\n" +
+      e2b_dictionary[letter][2]
   end
 end

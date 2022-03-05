@@ -33,7 +33,6 @@ RSpec.describe Writer do
       "z" => ["0.", ".0", "00"],
       " " => ["..", "..", ".."]
     }
-
     expect(expected.e2b_dictionary).to eq(expected_dictionary)
   end
 
