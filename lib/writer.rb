@@ -1,8 +1,8 @@
 class Writer
-  attr_reader :english_to_braille
+  attr_reader :e2b_dictionary
 
-  def initialize
-    @english_to_braille = {
+  def initialize(letter)
+    @e2b_dictionary = {
       "a" => ["0.", "..", ".."],
       "b" => ["0.", "0.", ".."],
       "c" => ["00", "..", ".."],

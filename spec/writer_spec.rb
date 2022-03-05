@@ -2,8 +2,19 @@ require "./lib/writer"
 require "pry"
 
 RSpec.describe Writer do
-  it "has attributes" do
+  it "has dictionary + space" do
     expected = Writer.new
-    expect(expected.english_to_braille.count).to eq(27)
+    expect(expected.e2b_dictionary.count).to eq(27)
+  end
+
+  it "converts letter to braille" do
+    expected = Writer.new
+    expect { expected.translate_letter("a") }.to output(
+      <<~EXPECTED
+        0.
+        ..
+        ..
+      EXPECTED
+    ).to_stdout
   end
 end
