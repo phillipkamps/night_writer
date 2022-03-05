@@ -9,7 +9,7 @@ RSpec.describe Writer do
 
   it "converts letter to braille" do
     expected = Writer.new
-    expect { expected.translate_letter("a") }.to output(
+    expect { puts expected.translate_letter("a") }.to output(
       <<~EXPECTED
         0.
         ..
