@@ -5,7 +5,7 @@ require "pry"
 
 # put the thing that does the stuff here
 translated = Writer.new
-translated.translate_letter(@incoming_text.chomp)
+translated.translate_letter(@incoming_text)
 
 writer = File.open(ARGV[1], "w")
 writer.write(translated)
