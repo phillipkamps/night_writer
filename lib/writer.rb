@@ -33,13 +33,17 @@ class Writer
     }
   end
 
-  def translate_letter(letter)
-    e2b_dictionary[letter][0] + "\n" +
-      e2b_dictionary[letter][1] + "\n" +
-      e2b_dictionary[letter][2]
+  def translate_char(char)
+    e2b_dictionary[char][0] + "\n" +
+      e2b_dictionary[char][1] + "\n" +
+      e2b_dictionary[char][2]
   end
 
   def translate_message(message)
-    message.each do { |char| translate_letter(char)}
+    chars = message.chars
+    braille_array = []
+    chars.each { |char| braille_array << translate_char(char) }
+    binding.pry
+    braille_array.join
   end
 end
