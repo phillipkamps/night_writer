@@ -58,7 +58,7 @@ class Writer
     braille_array.join
   end
 
-  def translate_message
+  def translate_oneline
     top_row + "\n" + mid_row + "\n" + bot_row
   end
 end
