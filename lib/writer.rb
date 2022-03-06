@@ -58,11 +58,7 @@ class Writer
     braille_array.join
   end
 
-  # def translate_message(message)
-  #   chars = message.chars
-  #   braille_array = []
-  #   chars.each { |char| braille_array << translate_char(char) }
-  #   # binding.pry
-  #   braille_array.join
-  # end
+  def translate_message
+    top_row + "\n" + mid_row + "\n" + bot_row
+  end
 end

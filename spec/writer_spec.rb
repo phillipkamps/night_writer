@@ -36,17 +36,6 @@ RSpec.describe Writer do
     expect(expected.e2b_dictionary).to eq(expected_dictionary)
   end
 
-  xit "translates letter to braille" do
-    expected = Writer.new("a")
-    expect { puts expected.translate_char }.to output(
-      <<~EXPECTED
-        0.
-        ..
-        ..
-      EXPECTED
-    ).to_stdout
-  end
-
   it "translates words to braille - top row" do
     expected = Writer.new("hello world")
     expect(expected.top_row).to eq("0.0.0.0.0....00.0.0.00")
@@ -62,9 +51,20 @@ RSpec.describe Writer do
     expect(expected.bot_row).to eq("....0.0.0....00.0.0...")
   end
 
-  xit "translates words to braille" do
-    expected = Writer.new
-    expect { puts expected.translate_message("hello world") }.to output(
+  it "translates letter to braille" do
+    expected = Writer.new("a")
+    expect { puts expected.translate_message }.to output(
+      <<~EXPECTED
+        0.
+        ..
+        ..
+      EXPECTED
+    ).to_stdout
+  end
+
+  it "translates words to braille" do
+    expected = Writer.new("hello world")
+    expect { puts expected.translate_message }.to output(
       <<~EXPECTED
         0.0.0.0.0....00.0.0.00
         00.00.0..0..00.0000..0
