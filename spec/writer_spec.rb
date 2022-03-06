@@ -33,7 +33,7 @@ RSpec.describe Writer do
       "z" => ["0.", ".0", "00"],
       " " => ["..", "..", ".."]
     }
-    expect(expected.e2b_dictionary).to eq(expected_dictionary)
+    expect(expected.eng_to_braille_dict).to eq(expected_dictionary)
   end
 
   it "translates letter to braille" do

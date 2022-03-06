@@ -1,9 +1,9 @@
 class Writer
-  attr_reader :e2b_dictionary, :chars
+  attr_reader :eng_to_braille_dict, :eng_chars
 
   def initialize(message)
-    @chars = message.chars
-    @e2b_dictionary = {
+    @eng_chars = message.chars
+    @eng_to_braille_dict = {
       "a" => ["0.", "..", ".."],
       "b" => ["0.", "0.", ".."],
       "c" => ["00", "..", ".."],
@@ -35,21 +35,19 @@ class Writer
   end
 
   def translate
-    braille_lines_count = (chars.count / 40.0).ceil
-    braille_chars = []
-
-    braille_lines_count.times do |i|
+    braille_lines_count = (eng_chars.count / 40.0).ceil
+    braille_lines = braille_lines_count.times.map do |i|
       start = (40 * i)
       stop = start + 39
 
-      top_braille_array = chars[start..stop].map { |char| e2b_dictionary[char][0] }
-      mid_braille_array = chars[start..stop].map { |char| e2b_dictionary[char][1] }
-      bot_braille_array = chars[start..stop].map { |char| e2b_dictionary[char][2] }
+      top_braille_row = eng_chars[start..stop].map { |eng_char| eng_to_braille_dict[eng_char][0] }
+      mid_braille_row = eng_chars[start..stop].map { |eng_char| eng_to_braille_dict[eng_char][1] }
+      bot_braille_row = eng_chars[start..stop].map { |eng_char| eng_to_braille_dict[eng_char][2] }
 
-      braille_chars << top_braille_array.join + "\n" +
-        mid_braille_array.join + "\n" +
-        bot_braille_array.join
+      top_braille_row.join + "\n" +
+        mid_braille_row.join + "\n" +
+        bot_braille_row.join
     end
-    braille_chars.join("\n\n")
+    braille_lines.join("\n\n")
   end
 end
