@@ -5,7 +5,7 @@ require "pry"
 
 # put the thing that does the stuff here
 translate_me = Writer.new(@incoming_text)
-@in_braille = translate_me.translate_message
+@in_braille = translate_me.translate_oneline
 
 writer = File.open(ARGV[1], "w")
 writer.write(@in_braille)

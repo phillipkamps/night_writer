@@ -34,12 +34,6 @@ class Writer
     }
   end
 
-  def translate_char
-    e2b_dictionary[chars][0] + "\n" +
-      e2b_dictionary[chars][1] + "\n" +
-      e2b_dictionary[chars][2]
-  end
-
   def top_row
     braille_array = []
     chars.each { |char| braille_array << e2b_dictionary[char][0] }
@@ -60,5 +54,9 @@ class Writer
 
   def translate_oneline
     top_row + "\n" + mid_row + "\n" + bot_row
+  end
+
+  def translate
+    # print first 40 chars of each row, then next 40 of each, then next...
   end
 end
