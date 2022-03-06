@@ -54,21 +54,21 @@ class Writer
   end
 
   def translate
-    l1_top_braille_array = chars[0..39].map { |char| e2b_dictionary[char][0] }
-    l1_mid_braille_array = chars[0..39].map { |char| e2b_dictionary[char][1] }
-    l1_bot_braille_array = chars[0..39].map { |char| e2b_dictionary[char][2] }
+    braille_lines_count = (chars.count / 40.0).ceil
+    braille_chars = []
 
-    l2_top_braille_array = chars[40..79].map { |char| e2b_dictionary[char][0] }
-    l2_mid_braille_array = chars[40..79].map { |char| e2b_dictionary[char][1] }
-    l2_bot_braille_array = chars[40..79].map { |char| e2b_dictionary[char][2] }
+    braille_lines_count.times do |i|
+      start = (40 * i)
+      stop = start + 39
 
-    l1_top_braille_array.join + "\n" +
-      l1_mid_braille_array.join + "\n" +
-      l1_bot_braille_array.join + "\n" + "\n" +
-      l2_top_braille_array.join + "\n" +
-      l2_mid_braille_array.join + "\n" +
-      l2_bot_braille_array.join
+      top_braille_array = chars[start..stop].map { |char| e2b_dictionary[char][0] }
+      mid_braille_array = chars[start..stop].map { |char| e2b_dictionary[char][1] }
+      bot_braille_array = chars[start..stop].map { |char| e2b_dictionary[char][2] }
 
-    # return first 40 chars of each row, then next 40 of each, then next...
+      braille_chars << top_braille_array.join + "\n" +
+        mid_braille_array.join + "\n" +
+        bot_braille_array.join
+    end
+    braille_chars.join("\n\n")
   end
 end
