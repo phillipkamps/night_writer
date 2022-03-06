@@ -49,10 +49,6 @@ class Writer
     braille_array.join
   end
 
-  def translate_oneline
-    top_row + "\n" + mid_row + "\n" + bot_row
-  end
-
   def translate
     braille_lines_count = (chars.count / 40.0).ceil
     braille_chars = []
