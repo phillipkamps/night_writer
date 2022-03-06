@@ -4,8 +4,8 @@ require "pry"
 @incoming_text = File.read(ARGV[0]).chomp
 
 # put the thing that does the stuff here
-translated = Writer.new
-@in_braille = translated.translate_message(@incoming_text)
+translate_me = Writer.new(@incoming_text)
+@in_braille = translate_me.translate_top_row
 
 writer = File.open(ARGV[1], "w")
 writer.write(@in_braille)

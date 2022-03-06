@@ -3,7 +3,7 @@ require "pry"
 
 RSpec.describe Writer do
   it "has dictionary + space" do
-    expected = Writer.new
+    expected = Writer.new("a")
     expected_dictionary = {
       "a" => ["0.", "..", ".."],
       "b" => ["0.", "0.", ".."],
@@ -36,9 +36,9 @@ RSpec.describe Writer do
     expect(expected.e2b_dictionary).to eq(expected_dictionary)
   end
 
-  it "translates letter to braille" do
-    expected = Writer.new
-    expect { puts expected.translate_char("a") }.to output(
+  xit "translates letter to braille" do
+    expected = Writer.new("a")
+    expect { puts expected.translate_char }.to output(
       <<~EXPECTED
         0.
         ..
@@ -48,12 +48,8 @@ RSpec.describe Writer do
   end
 
   it "translates words to braille - top row" do
-    expected = Writer.new
-    expect { puts expected.translate_top_row("hello world") }.to output(
-      <<~EXPECTED
-        0.0.0.0.0....00.0.0.00
-      EXPECTED
-    ).to_stdout
+    expected = Writer.new("hello world")
+    expect(expected.translate_top_row).to eq("0.0.0.0.0....00.0.0.00")
   end
 
   xit "translates words to braille" do

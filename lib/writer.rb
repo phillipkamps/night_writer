@@ -1,7 +1,8 @@
 class Writer
-  attr_reader :e2b_dictionary
+  attr_reader :e2b_dictionary, :chars
 
-  def initialize
+  def initialize(message)
+    @chars = message.chars
     @e2b_dictionary = {
       "a" => ["0.", "..", ".."],
       "b" => ["0.", "0.", ".."],
@@ -33,17 +34,23 @@ class Writer
     }
   end
 
-  def translate_char(char)
-    e2b_dictionary[char][0] + "\n" +
-      e2b_dictionary[char][1] + "\n" +
-      e2b_dictionary[char][2]
+  def translate_char
+    e2b_dictionary[chars][0] + "\n" +
+      e2b_dictionary[chars][1] + "\n" +
+      e2b_dictionary[chars][2]
   end
 
-  def translate_message(message)
-    chars = message.chars
+  def translate_top_row
     braille_array = []
-    chars.each { |char| braille_array << translate_char(char) }
-    binding.pry
+    chars.each { |char| braille_array << e2b_dictionary[char][0] }
     braille_array.join
   end
+
+  # def translate_message(message)
+  #   chars = message.chars
+  #   braille_array = []
+  #   chars.each { |char| braille_array << translate_char(char) }
+  #   # binding.pry
+  #   braille_array.join
+  # end
 end
