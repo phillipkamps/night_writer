@@ -53,24 +53,24 @@ RSpec.describe Writer do
 
   it "translates letter to braille" do
     expected = Writer.new("a")
-    expect { puts expected.translate_oneline }.to output(
-      <<~EXPECTED
+    expect(expected.translate).to eq(
+      <<~EXPECTED.strip
         0.
         ..
         ..
       EXPECTED
-    ).to_stdout
+    )
   end
 
   it "translates words to braille" do
     expected = Writer.new("hello world")
-    expect { puts expected.translate_oneline }.to output(
-      <<~EXPECTED
+    expect(expected.translate).to eq(
+      <<~EXPECTED.strip
         0.0.0.0.0....00.0.0.00
         00.00.0..0..00.0000..0
         ....0.0.0....00.0.0...
       EXPECTED
-    ).to_stdout
+    )
   end
 
   it "splits messages over 80 characters" do
