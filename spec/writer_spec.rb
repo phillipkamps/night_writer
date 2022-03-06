@@ -73,15 +73,10 @@ RSpec.describe Writer do
     ).to_stdout
   end
 
-  it "translates words to braille - top row" do
+  it "splits messages over 80 characters" do
     expected = Writer.new("worry will not take away your trouble tomorrow only your peace today")
-    expect(expected.translate).to eq(".00.0.0.00...0.00.0...000..0...00.0.0...0..00.00..000.0.0....00.0.0.0.0.0....00.")
-  end
-
-  xit "splits messages over 80 characters" do
-    expected = Writer.new("worry will not take away your trouble tomorrow only your peace today")
-    expect { puts expected.translate }.to output(
-      <<~EXPECTED
+    expect(expected.translate).to eq(
+      <<~EXPECTED.strip
         .00.0.0.00...0.00.0...000..0...00.0.0...0..00.00..000.0.0....00.0.0.0.0.0....00.
         00.00000.0..000.0.0....0.000..00.....0....00...0...0.0..00..0000.0..0.0..0..00.0
         .00.0.0.00...0..0.0...0.0.0...0...0........0..00..000.000...0.0.0.00..0.....0.0.
@@ -90,6 +85,6 @@ RSpec.describe Writer do
         ...00000.000...0.00..0...0.0..00..0..0.....0..00.0.0...0
         0.0.0.0.0..0..0.0.0.00..000.000...0...........0.0.....00
       EXPECTED
-    ).to_stdout
+    )
   end
 end

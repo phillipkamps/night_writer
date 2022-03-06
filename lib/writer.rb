@@ -54,8 +54,20 @@ class Writer
   end
 
   def translate
-    braille_array = chars[0..39].map { |char| e2b_dictionary[char][0] }
-    braille_array.join
+    l1_top_braille_array = chars[0..39].map { |char| e2b_dictionary[char][0] }
+    l1_mid_braille_array = chars[0..39].map { |char| e2b_dictionary[char][1] }
+    l1_bot_braille_array = chars[0..39].map { |char| e2b_dictionary[char][2] }
+
+    l2_top_braille_array = chars[40..79].map { |char| e2b_dictionary[char][0] }
+    l2_mid_braille_array = chars[40..79].map { |char| e2b_dictionary[char][1] }
+    l2_bot_braille_array = chars[40..79].map { |char| e2b_dictionary[char][2] }
+
+    l1_top_braille_array.join + "\n" +
+      l1_mid_braille_array.join + "\n" +
+      l1_bot_braille_array.join + "\n" + "\n" +
+      l2_top_braille_array.join + "\n" +
+      l2_mid_braille_array.join + "\n" +
+      l2_bot_braille_array.join
 
     # return first 40 chars of each row, then next 40 of each, then next...
   end
