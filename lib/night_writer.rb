@@ -1,16 +1,14 @@
-require "./lib/translator"
+require "./lib/writer"
 require "pry"
 
-handle = File.open(ARGV[0], "r")
-@incoming_text = handle.read
-handle.close
+@incoming_text = File.read(ARGV[0]).chomp
 
 # put the thing that does the stuff here
-translated = Translator.new(@incoming_text)
-translated.change_it
+translate_me = Writer.new(@incoming_text)
+@in_braille = translate_me.translate
 
 writer = File.open(ARGV[1], "w")
-writer.write(translated)
+writer.write(@in_braille)
 writer.close
 
 puts "Created #{ARGV[1]} containing #{@incoming_text.length} characters"
