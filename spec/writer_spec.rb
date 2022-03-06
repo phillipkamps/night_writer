@@ -57,6 +57,11 @@ RSpec.describe Writer do
     expect(expected.mid_row).to eq("00.00.0..0..00.0000..0")
   end
 
+  it "translates words to braille - bottom row" do
+    expected = Writer.new("hello world")
+    expect(expected.bot_row).to eq("....0.0.0....00.0.0...")
+  end
+
   xit "translates words to braille" do
     expected = Writer.new
     expect { puts expected.translate_message("hello world") }.to output(
