@@ -36,21 +36,6 @@ RSpec.describe Writer do
     expect(expected.e2b_dictionary).to eq(expected_dictionary)
   end
 
-  it "translates words to braille - top row" do
-    expected = Writer.new("hello world")
-    expect(expected.top_row).to eq("0.0.0.0.0....00.0.0.00")
-  end
-
-  it "translates words to braille - middle row" do
-    expected = Writer.new("hello world")
-    expect(expected.mid_row).to eq("00.00.0..0..00.0000..0")
-  end
-
-  it "translates words to braille - bottom row" do
-    expected = Writer.new("hello world")
-    expect(expected.bot_row).to eq("....0.0.0....00.0.0...")
-  end
-
   it "translates letter to braille" do
     expected = Writer.new("a")
     expect(expected.translate).to eq(

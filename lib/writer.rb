@@ -34,21 +34,6 @@ class Writer
     }
   end
 
-  def top_row
-    braille_array = chars.map { |char| e2b_dictionary[char][0] }
-    braille_array.join
-  end
-
-  def mid_row
-    braille_array = chars.map { |char| e2b_dictionary[char][1] }
-    braille_array.join
-  end
-
-  def bot_row
-    braille_array = chars.map { |char| e2b_dictionary[char][2] }
-    braille_array.join
-  end
-
   def translate
     braille_lines_count = (chars.count / 40.0).ceil
     braille_chars = []
