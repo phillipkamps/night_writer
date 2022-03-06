@@ -35,20 +35,17 @@ class Writer
   end
 
   def top_row
-    braille_array = []
-    chars.each { |char| braille_array << e2b_dictionary[char][0] }
+    braille_array = chars.map { |char| e2b_dictionary[char][0] }
     braille_array.join
   end
 
   def mid_row
-    braille_array = []
-    chars.each { |char| braille_array << e2b_dictionary[char][1] }
+    braille_array = chars.map { |char| e2b_dictionary[char][1] }
     braille_array.join
   end
 
   def bot_row
-    braille_array = []
-    chars.each { |char| braille_array << e2b_dictionary[char][2] }
+    braille_array = chars.map { |char| e2b_dictionary[char][2] }
     braille_array.join
   end
 
@@ -57,6 +54,9 @@ class Writer
   end
 
   def translate
-    # print first 40 chars of each row, then next 40 of each, then next...
+    braille_array = chars[0..39].map { |char| e2b_dictionary[char][0] }
+    braille_array.join
+
+    # return first 40 chars of each row, then next 40 of each, then next...
   end
 end
