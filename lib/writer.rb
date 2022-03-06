@@ -46,6 +46,12 @@ class Writer
     braille_array.join
   end
 
+  def mid_row
+    braille_array = []
+    chars.each { |char| braille_array << e2b_dictionary[char][1] }
+    braille_array.join
+  end
+
   # def translate_message(message)
   #   chars = message.chars
   #   braille_array = []
