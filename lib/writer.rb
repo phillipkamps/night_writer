@@ -40,7 +40,7 @@ class Writer
       e2b_dictionary[chars][2]
   end
 
-  def translate_top_row
+  def top_row
     braille_array = []
     chars.each { |char| braille_array << e2b_dictionary[char][0] }
     braille_array.join
