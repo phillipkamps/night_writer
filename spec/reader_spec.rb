@@ -63,4 +63,15 @@ RSpec.describe Reader do
     )
     expect(expected.translate).to eq("a")
   end
+
+  it "translates braille words to english" do
+    expected = Reader.new(
+      <<~INPUT.strip
+        0.0.0.0.0....00.0.0.00
+        00.00.0..0..00.0000..0
+        ....0.0.0....00.0.0...
+      INPUT
+    )
+    expect(expected.translate).to eq("hello world")
+  end
 end

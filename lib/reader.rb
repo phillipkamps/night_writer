@@ -12,6 +12,19 @@ class Reader
 
   def translate
     message_array = message.split("\n")
-    braille_to_eng_dict[message_array]
+    # braille_to_eng_dict[message_array]
+    top_row = message_array[0].chars.each_slice(2).map { |double| double.join }
+    mid_row = message_array[1].chars.each_slice(2).map { |double| double.join }
+    bot_row = message_array[2].chars.each_slice(2).map { |double| double.join }
+    eng_letters_count = top_row.count
+    eng_letters = eng_letters_count.times.map do |i|
+      letter_array = []
+      letter_array << top_row[i]
+      letter_array << mid_row[i]
+      letter_array << bot_row[i]
+
+      braille_to_eng_dict[letter_array]
+    end
+    eng_letters.join
   end
 end
