@@ -7,6 +7,5 @@ class Reader
 
   def initialize
     @braille_to_eng_dict = eng_to_braille_dict.invert
-    binding.pry
   end
 end

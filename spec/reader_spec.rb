@@ -40,4 +40,15 @@ RSpec.describe Reader do
     }
     expect(expected.braille_to_eng_dict).to eq(expected_dictionary.invert)
   end
+
+  it "translates braille character to english" do
+    expected = Reader.new(
+      <<~INPUT.strip
+        0.
+        ..
+        ..
+      INPUT
+    )
+    expect(expected.translate).to eq("a")
+  end
 end
