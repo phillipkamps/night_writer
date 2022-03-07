@@ -19,9 +19,7 @@ class Writer
       mid_braille_row = eng_chars[start..stop].map { |eng_char| eng_to_braille_dict[eng_char][1] }
       bot_braille_row = eng_chars[start..stop].map { |eng_char| eng_to_braille_dict[eng_char][2] }
 
-      top_braille_row.join + "\n" +
-        mid_braille_row.join + "\n" +
-        bot_braille_row.join
+      top_braille_row.join + "\n" + mid_braille_row.join + "\n" + bot_braille_row.join
     end
     braille_lines.join("\n\n")
   end
