@@ -13,8 +13,8 @@ class Reader
   def translate
     message_array = message.split("\n")
     top_row = (message_array.find_all.with_index { |_, i| i % 4 == 0 }).join.chars.each_slice(2).map { |double| double.join }
-    mid_row = (message_array[1] + message_array[5]).chars.each_slice(2).map { |double| double.join }
-    bot_row = (message_array[2] + message_array[6]).chars.each_slice(2).map { |double| double.join }
+    mid_row = (message_array.find_all.with_index { |_, i| i % 4 == 1 }).join.chars.each_slice(2).map { |double| double.join }
+    bot_row = (message_array.find_all.with_index { |_, i| i % 4 == 2 }).join.chars.each_slice(2).map { |double| double.join }
 
     eng_letters_count = top_row.count
     eng_letters = eng_letters_count.times.map do |i|
