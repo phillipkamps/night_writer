@@ -5,7 +5,11 @@ class Reader
 
   attr_reader :braille_to_eng_dict
 
-  def initialize
+  def initialize(message)
     @braille_to_eng_dict = eng_to_braille_dict.invert
+  end
+
+  def translate
+    "a"
   end
 end

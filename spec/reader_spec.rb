@@ -3,12 +3,24 @@ require "pry"
 
 RSpec.describe Reader do
   it "exists" do
-    expected = Reader.new
+    expected = Reader.new(
+      <<~INPUT.strip
+        0.
+        ..
+        ..
+      INPUT
+    )
     expect(expected).to be_an_instance_of(Reader)
   end
 
   it "has dictionary + space" do
-    expected = Reader.new
+    expected = Reader.new(
+      <<~INPUT.strip
+        0.
+        ..
+        ..
+      INPUT
+    )
     expected_dictionary = {
       "a" => ["0.", "..", ".."],
       "b" => ["0.", "0.", ".."],
